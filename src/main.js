@@ -5,6 +5,8 @@ import App from './App'
 import router from './router'
 import vuefire from './vuefire'
 
+require('./assets/css/main.css')
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

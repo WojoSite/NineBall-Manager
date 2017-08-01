@@ -1,6 +1,6 @@
 # bedrock-fargo
 
-> Application for managing Bedrock Billiards 9-Ball league, players, rankings, etc.
+> Application for managing a 9-Ball pool league, players, rankings, etc.
 
 ## Build Setup
 

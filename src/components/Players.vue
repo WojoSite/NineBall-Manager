@@ -9,16 +9,32 @@
         <div class="t-cell">Last Name</div>
         <div class="t-cell">Rank</div>
         <div class="t-cell">Robustness</div>
+        <div class="t-cell">Active?</div>
       </div>
       <div class="t-row" v-for="player in activePlayers"
                           v-bind:key="player.id">
-        <div class="t-cell">{{player.id}}</div>
-        <div class="t-cell">{{player.firstName}}</div>
-        <div class="t-cell">{{player.lastName}}</div>
-        <div class="t-cell">{{player.rank}}</div>
-        <div class="t-cell">{{player.robustness}}</div>
-        <div class="t-cell"><i class="material-icons" v-on:click="removePlayer(player)">delete</i></div>
-        <div class="t-cell"><i class="material-icons" v-on:click="editPlayer(player)">edit</i></div>
+        <div v-show="player.edit == false">
+          <div class="t-cell">{{player.id}}</div>
+          <div class="t-cell">{{player.firstName}}</div>
+          <div class="t-cell">{{player.lastName}}</div>
+          <div class="t-cell">{{player.rank}}</div>
+          <div class="t-cell">{{player.robustness}}</div>
+          <div v-show="player.isActive==false" class="t-cell"><i class="material-icons">thumb_down</i></div>
+          <div v-show="player.isActive==true" class="t-cell"><i class="material-icons">thumb_up</i></div>
+          <div class="t-cell"><i class="material-icons" v-on:click="removePlayer(player)">delete</i></div>
+          <div class="t-cell"><i class="material-icons" v-on:click="editPlayer(player)">edit</i></div>
+        </div>
+        <div v-show="player.edit == true">
+          <input class="t-cell" v-model="player.id" />
+          <input class="t-cell" v-model="player.firstName" />
+          <input class="t-cell" v-model="player.lastName" />
+          <input class="t-cell" v-model="player.rank" />
+          <input class="t-cell" v-model="player.robustness" />
+          <div v-show="player.isActive==false" class="t-cell"><i class="material-icons" v-on:click="toggleActive(player)">thumb_down</i></div>
+          <div v-show="player.isActive==true" class="t-cell"><i class="material-icons" v-on:click="toggleActive(player)">thumb_up</i></div>
+          <div class="t-cell"><i class="material-icons" v-on:click="removePlayer(player)">delete</i></div>
+          <div class="t-cell"><i class="material-icons" v-on:click="savePlayer(player)">save</i></div>
+        </div>
       </div>
     </div>
     <h2>Inactive</h2>
@@ -29,16 +45,32 @@
         <div class="t-cell">Last Name</div>
         <div class="t-cell">Rank</div>
         <div class="t-cell">Robustness</div>
+        <div class="t-cell">Active?</div>
       </div>
       <div class="t-row" v-for="player in inactivePlayers"
                           v-bind:key="player.id">
-        <div class="t-cell">{{player.id}}</div>
-        <div class="t-cell">{{player.firstName}}</div>
-        <div class="t-cell">{{player.lastName}}</div>
-        <div class="t-cell">{{player.rank}}</div>
-        <div class="t-cell">{{player.robustness}}</div>
-        <div class="t-cell"><i class="material-icons" v-on:click="removePlayer(player)">delete</i></div>
-        <div class="t-cell"><i class="material-icons" v-on:click="editPlayer(player)">edit</i></div>
+        <div v-show="player.edit == false">
+          <div class="t-cell">{{player.id}}</div>
+          <div class="t-cell">{{player.firstName}}</div>
+          <div class="t-cell">{{player.lastName}}</div>
+          <div class="t-cell">{{player.rank}}</div>
+          <div class="t-cell">{{player.robustness}}</div>
+          <div v-show="player.isActive==false" class="t-cell"><i class="material-icons">thumb_down</i></div>
+          <div v-show="player.isActive==true" class="t-cell"><i class="material-icons">thumb_up</i></div>
+          <div class="t-cell"><i class="material-icons" v-on:click="removePlayer(player)">delete</i></div>
+          <div class="t-cell"><i class="material-icons" v-on:click="editPlayer(player)">edit</i></div>
+        </div>
+        <div v-show="player.edit == true">
+          <input class="t-cell" v-model="player.id" />
+          <input class="t-cell" v-model="player.firstName" />
+          <input class="t-cell" v-model="player.lastName" />
+          <input class="t-cell" v-model="player.rank" />
+          <input class="t-cell" v-model="player.robustness" />
+          <div v-show="player.isActive==false" class="t-cell"><i class="material-icons" v-on:click="toggleActive(player)">thumb_down</i></div>
+          <div v-show="player.isActive==true" class="t-cell"><i class="material-icons" v-on:click="toggleActive(player)">thumb_up</i></div>
+          <div class="t-cell"><i class="material-icons" v-on:click="removePlayer(player)">delete</i></div>
+          <div class="t-cell"><i class="material-icons" v-on:click="savePlayer(player)">save</i></div>
+        </div>
       </div>
     </div>
     <h2>Add a Player</h2>
@@ -87,6 +119,7 @@ export default {
       this.newPlayer.rank = 350
       this.newPlayer.robustness = 0
       this.newPlayer.isActive = true
+      this.newPlayer.edit = false
     },
     removePlayer: function (player) {
       var allPlayers = firedb.ref('players')
@@ -94,7 +127,23 @@ export default {
       allPlayers.child(player['.key']).remove()
     },
     editPlayer: function (player) {
-      console.log('Should probably implement editing. :|')
+      player.edit = true
+    },
+    savePlayer: function (player) {
+      var editPlayer = firedb.ref('players').child(player['.key'])
+
+      editPlayer.set({
+        id: player.id,
+        firstName: player.firstName,
+        lastName: player.lastName,
+        rank: player.rank,
+        robustness: player.robustness,
+        isActive: player.isActive,
+        edit: false
+      })
+    },
+    toggleActive: function (player) {
+      player.isActive = !player.isActive
     }
   },
 
@@ -106,7 +155,8 @@ export default {
         lastName: '',
         rank: 350,
         robustness: 0,
-        isActive: true
+        isActive: true,
+        edit: false
       }
     }
   }
@@ -115,80 +165,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-
-.t-body {
-  width: 80%;
-  display: table;
-  vertical-align: middle;
-}
-
-.t-head {
-  display: table-row;
-  font-weight: bold; 
-}
-
-.t-row {
-  display: table-row;
-}
-
-.t-cell {
-  display: table-cell;
-  border: 1px solid gray;
-}
-
-.fw {
-  width: 200px;
-}
-
-.label {
-  width: 30%;
-  float: left;
-}
-
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  vertical-align: middle;
-
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: 'liga';
-}
-
-.material-icons:hover {
-  color: darkolivegreen;
-}
 </style>
