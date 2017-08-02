@@ -39,8 +39,8 @@ export default {
   line-height: 22pt;
   width: 100%;
   padding: 2px;
-  border-top: 2px green solid;
-  border-bottom: 2px green solid;
+  border-top: 2px #698F3F solid;
+  border-bottom: 2px #698F3F solid;
 }
 
 .btn {
@@ -48,8 +48,8 @@ export default {
   font-size: 16pt;
   background: none;
 	background-image: none;
-	border: 2px green solid;
-	color: green;
+	border: 2px #698F3F solid;
+	color: #698F3F;
   padding: 2px;
 	letter-spacing: 1px;
 	text-decoration: none ! important;
@@ -61,6 +61,6 @@ export default {
 
 .btn:hover {
 	background: lightgray;
-	color: green;
+	color: #698F3F;
 }
 </style>

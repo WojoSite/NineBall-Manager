@@ -4,89 +4,98 @@
     <h2>Active</h2>
     <div class="t-body">
       <div class="t-head">
-        <div class="t-cell">Player #</div>
-        <div class="t-cell">First Name</div>
-        <div class="t-cell">Last Name</div>
-        <div class="t-cell">Rank</div>
-        <div class="t-cell">Robustness</div>
-        <div class="t-cell">Active?</div>
+        <div class="t-cell-1">Player #</div>
+        <div class="t-cell-2">First Name</div>
+        <div class="t-cell-3">Last Name</div>
+        <div class="t-cell-4">Rank</div>
+        <div class="t-cell-5">Robustness</div>
+        <div class="t-cell-6">Active?</div>
+        <div class="t-cell-7">Delete</div>
+        <div class="t-cell-8">Edit</div>
       </div>
       <div class="t-row" v-for="player in activePlayers"
                           v-bind:key="player.id">
-        <div v-show="player.edit == false">
-          <div class="t-cell">{{player.id}}</div>
-          <div class="t-cell">{{player.firstName}}</div>
-          <div class="t-cell">{{player.lastName}}</div>
-          <div class="t-cell">{{player.rank}}</div>
-          <div class="t-cell">{{player.robustness}}</div>
-          <div v-show="player.isActive==false" class="t-cell"><i class="material-icons">thumb_down</i></div>
-          <div v-show="player.isActive==true" class="t-cell"><i class="material-icons">thumb_up</i></div>
-          <div class="t-cell"><i class="material-icons" v-on:click="removePlayer(player)">delete</i></div>
-          <div class="t-cell"><i class="material-icons" v-on:click="editPlayer(player)">edit</i></div>
-        </div>
-        <div v-show="player.edit == true">
-          <input class="t-cell" v-model="player.id" />
-          <input class="t-cell" v-model="player.firstName" />
-          <input class="t-cell" v-model="player.lastName" />
-          <input class="t-cell" v-model="player.rank" />
-          <input class="t-cell" v-model="player.robustness" />
-          <div v-show="player.isActive==false" class="t-cell"><i class="material-icons" v-on:click="toggleActive(player)">thumb_down</i></div>
-          <div v-show="player.isActive==true" class="t-cell"><i class="material-icons" v-on:click="toggleActive(player)">thumb_up</i></div>
-          <div class="t-cell"><i class="material-icons" v-on:click="removePlayer(player)">delete</i></div>
-          <div class="t-cell"><i class="material-icons" v-on:click="savePlayer(player)">save</i></div>
-        </div>
+          <div class="t-cell-1" v-show="player.edit == false">{{player.id}}</div>
+          <div class="t-cell-2" v-show="player.edit == false">{{player.firstName}}</div>
+          <div class="t-cell-3" v-show="player.edit == false">{{player.lastName}}</div>
+          <div class="t-cell-4" v-show="player.edit == false">{{player.rank}}</div>
+          <div class="t-cell-5" v-show="player.edit == false">{{player.robustness}}</div>
+          <div class="t-cell-6" v-show="player.isActive==false && player.edit == false"><i class="material-icons">thumb_down</i></div>
+          <div class="t-cell-6" v-show="player.isActive==true && player.edit == false"><i class="material-icons">thumb_up</i></div>
+          <div class="t-cell-7" v-show="player.edit == false"><i class="material-icons" v-on:click="removePlayer(player)">delete</i></div>
+          <div class="t-cell-8" v-show="player.edit == false"><i class="material-icons" v-on:click="editPlayer(player)">edit</i></div>
+          <div class="t-cell-1" v-show="player.edit == true"><input v-model="player.id" /></div>
+          <div class="t-cell-2" v-show="player.edit == true"><input v-model="player.firstName" /></div>
+          <div class="t-cell-3" v-show="player.edit == true"><input v-model="player.lastName" /></div>
+          <div class="t-cell-4" v-show="player.edit == true"><input v-model="player.rank" /></div>
+          <div class="t-cell-5" v-show="player.edit == true"><input v-model="player.robustness" /></div>
+          <div class="t-cell-6" v-show="player.isActive==false && player.edit ==  true"><i class="material-icons" v-on:click="toggleActive(player)">thumb_down</i></div>
+          <div class="t-cell-6" v-show="player.isActive==true && player.edit == true"><i class="material-icons" v-on:click="toggleActive(player)">thumb_up</i></div>
+          <div class="t-cell-7" v-show="player.edit == true"><i class="material-icons" v-on:click="removePlayer(player)">delete</i></div>
+          <div class="t-cell-8" v-show="player.edit == true"><i class="material-icons" v-on:click="savePlayer(player)">save</i></div>
       </div>
     </div>
     <h2>Inactive</h2>
     <div class="t-body">
       <div class="t-head">
-        <div class="t-cell">Player #</div>
-        <div class="t-cell">First Name</div>
-        <div class="t-cell">Last Name</div>
-        <div class="t-cell">Rank</div>
-        <div class="t-cell">Robustness</div>
-        <div class="t-cell">Active?</div>
+        <div class="t-cell-1">Player #</div>
+        <div class="t-cell-2">First Name</div>
+        <div class="t-cell-3">Last Name</div>
+        <div class="t-cell-4">Rank</div>
+        <div class="t-cell-5">Robustness</div>
+        <div class="t-cell-6">Active?</div>
+        <div class="t-cell-7">Delete</div>
+        <div class="t-cell-8">Edit</div>
       </div>
       <div class="t-row" v-for="player in inactivePlayers"
                           v-bind:key="player.id">
-        <div v-show="player.edit == false">
-          <div class="t-cell">{{player.id}}</div>
-          <div class="t-cell">{{player.firstName}}</div>
-          <div class="t-cell">{{player.lastName}}</div>
-          <div class="t-cell">{{player.rank}}</div>
-          <div class="t-cell">{{player.robustness}}</div>
-          <div v-show="player.isActive==false" class="t-cell"><i class="material-icons">thumb_down</i></div>
-          <div v-show="player.isActive==true" class="t-cell"><i class="material-icons">thumb_up</i></div>
-          <div class="t-cell"><i class="material-icons" v-on:click="removePlayer(player)">delete</i></div>
-          <div class="t-cell"><i class="material-icons" v-on:click="editPlayer(player)">edit</i></div>
-        </div>
-        <div v-show="player.edit == true">
-          <input class="t-cell" v-model="player.id" />
-          <input class="t-cell" v-model="player.firstName" />
-          <input class="t-cell" v-model="player.lastName" />
-          <input class="t-cell" v-model="player.rank" />
-          <input class="t-cell" v-model="player.robustness" />
-          <div v-show="player.isActive==false" class="t-cell"><i class="material-icons" v-on:click="toggleActive(player)">thumb_down</i></div>
-          <div v-show="player.isActive==true" class="t-cell"><i class="material-icons" v-on:click="toggleActive(player)">thumb_up</i></div>
-          <div class="t-cell"><i class="material-icons" v-on:click="removePlayer(player)">delete</i></div>
-          <div class="t-cell"><i class="material-icons" v-on:click="savePlayer(player)">save</i></div>
-        </div>
+        <div class="t-cell-1" v-show="player.edit == false">{{player.id}}</div>
+          <div class="t-cell-2" v-show="player.edit == false">{{player.firstName}}</div>
+          <div class="t-cell-3" v-show="player.edit == false">{{player.lastName}}</div>
+          <div class="t-cell-4" v-show="player.edit == false">{{player.rank}}</div>
+          <div class="t-cell-5" v-show="player.edit == false">{{player.robustness}}</div>
+          <div class="t-cell-6" v-show="player.isActive==false && player.edit == false"><i class="material-icons">thumb_down</i></div>
+          <div class="t-cell-6" v-show="player.isActive==true && player.edit == false"><i class="material-icons">thumb_up</i></div>
+          <div class="t-cell-7" v-show="player.edit == false"><i class="material-icons" v-on:click="removePlayer(player)">delete</i></div>
+          <div class="t-cell-8" v-show="player.edit == false"><i class="material-icons" v-on:click="editPlayer(player)">edit</i></div>
+          <div class="t-cell-1" v-show="player.edit == true"><input v-model="player.id" /></div>
+          <div class="t-cell-2" v-show="player.edit == true"><input v-model="player.firstName" /></div>
+          <div class="t-cell-3" v-show="player.edit == true"><input v-model="player.lastName" /></div>
+          <div class="t-cell-4" v-show="player.edit == true"><input v-model="player.rank" /></div>
+          <div class="t-cell-5" v-show="player.edit == true"><input v-model="player.robustness" /></div>
+          <div class="t-cell-6" v-show="player.isActive==false && player.edit ==  true"><i class="material-icons" v-on:click="toggleActive(player)">thumb_down</i></div>
+          <div class="t-cell-6" v-show="player.isActive==true && player.edit == true"><i class="material-icons" v-on:click="toggleActive(player)">thumb_up</i></div>
+          <div class="t-cell-7" v-show="player.edit == true"><i class="material-icons" v-on:click="removePlayer(player)">delete</i></div>
+          <div class="t-cell-8" v-show="player.edit == true"><i class="material-icons" v-on:click="savePlayer(player)">save</i></div>
       </div>
     </div>
     <h2>Add a Player</h2>
-    <form id="newPlayer" class="form-inline" v-on:submit.prevent="addPlayer">
-      <span class="label">Player # </span><input type="text" id="newPlayerNumber" v-model="newPlayer.id" /><br />
-      <span class="label">First Name </span> <input type="text" id="newPlayerFirst" v-model="newPlayer.firstName" /><br />
-      <span class="label">Last Name </span> <input type="text" id="newPlayerLast" v-model="newPlayer.lastName" /><br />
-      <span class="label">Rank </span> <input type="text" id="newPlayerRank" v-model="newPlayer.rank" /><br />
-      <span class="label">Robustness </span> <input type="text" id="newPlayerRobustness" v-model="newPlayer.robustness" /><br />
-      <input type="submit" value="Add Player">
-    </form>
+    <div class="t-body">
+      <div class="t-head">
+        <div class="t-cell-1">Player #</div>
+        <div class="t-cell-2">First Name</div>
+        <div class="t-cell-3">Last Name</div>
+        <div class="t-cell-4">Rank</div>
+        <div class="t-cell-5">Robustness</div>
+        <div class="t-cell-6">Active?</div>
+        <div class="t-cell-8">Save</div>
+      </div>
+      <div class="t-row">
+          <div class="t-cell-1"><input v-model="newPlayer.id" /></div>
+          <div class="t-cell-2"><input v-model="newPlayer.firstName" /></div>
+          <div class="t-cell-3"><input v-model="newPlayer.lastName" /></div>
+          <div class="t-cell-4"><input v-model="newPlayer.rank" /></div>
+          <div class="t-cell-5"><input v-model="newPlayer.robustness" /></div>
+          <div class="t-cell-6"><i class="material-icons" v-on:click="toggleActive(newPlayer)">thumb_up</i></div>
+          <div class="t-cell-8"><i class="material-icons" v-on:click="addPlayer">save</i></div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import {firedb} from '../vuefire'
+import toastr from 'toastr'
 
 export default {
   name: 'players',
@@ -113,9 +122,11 @@ export default {
       var allPlayers = firedb.ref('players')
 
       allPlayers.push(this.newPlayer)
-      this.newPlayer.id = ''
-      this.newPlayer.firstName = ''
-      this.newPlayer.lastName = ''
+
+      toastr.success('New player saved.')
+      this.newPlayer.id = '990000'
+      this.newPlayer.firstName = 'Robin'
+      this.newPlayer.lastName = 'Slate'
       this.newPlayer.rank = 350
       this.newPlayer.robustness = 0
       this.newPlayer.isActive = true
@@ -125,6 +136,8 @@ export default {
       var allPlayers = firedb.ref('players')
 
       allPlayers.child(player['.key']).remove()
+
+      toastr.success('Player removed.')
     },
     editPlayer: function (player) {
       player.edit = true
@@ -141,6 +154,10 @@ export default {
         isActive: player.isActive,
         edit: false
       })
+
+      player.edit = false
+
+      toastr.success('Player data updated.')
     },
     toggleActive: function (player) {
       player.isActive = !player.isActive
@@ -150,9 +167,9 @@ export default {
   data () {
     return {
       newPlayer: {
-        id: '',
-        firstName: '',
-        lastName: '',
+        id: '990000',
+        firstName: 'Robin',
+        lastName: 'Slate',
         rank: 350,
         robustness: 0,
         isActive: true,

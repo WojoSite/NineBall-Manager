@@ -1,0 +1,9 @@
+X Redo the basic layout for player grid, probably using CSS Grid unless support for that is genuinely bad. Regardless, at least get everything lined back up in columns again.
+X Make the Add Player section look no different from the existing player row in edit mode
+3. It's probably not to early to implement an account system with roles. We'll need it eventually so that not just anyone can edit anything. Only superadmins should be able to directly edit players, e.g.
+4. Do we need the notion of an "account" or can we glob all of that into the Player model? In principle there could be a user of the app that doesn't play in the league, and it might be cleaner regardless to just have things like the login state, role, and so forth stored independently.
+5. Create a landing page with login, & then brief explanation of all the components.
+6. Fix the (currently horrific) design of the navigation. I'm thinking a sidebar is smarter but didn't want to mess with it.
+7. Add validation of adding players to prevent adding the same ID twice or the default named player.
+8. Have the new player ID default to whatever is the next available ID.
+9. 
