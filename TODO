@@ -6,4 +6,7 @@ X Make the Add Player section look no different from the existing player row in 
 6. Fix the (currently horrific) design of the navigation. I'm thinking a sidebar is smarter but didn't want to mess with it.
 7. Add validation of adding players to prevent adding the same ID twice or the default named player.
 8. Have the new player ID default to whatever is the next available ID.
-9. 
+9. Implement sorting of the player list by clicking on the title. Maybe ditch the "Active" and "Inactive" sections and just manage that via the sorting.
+10. Implement team data model & link to the player
+11. Add column in player list to ID their team. Clicking on the team number should jump to the team page for that team
+12. Implement player detail page that shows detailed win/loss record, matches played (per season), rank chart over time, etc.

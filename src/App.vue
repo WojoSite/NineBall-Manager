@@ -3,7 +3,7 @@
     <img src="./assets/img/logo.jpg">
     <div id="navbar">
       <router-link to="/players" class="btn">Players</router-link>
-      <router-link to="/help" class="btn">Help</router-link>
+      <router-link to="/about" class="btn">About</router-link>
     </div>
     <router-view></router-view>
   </div>

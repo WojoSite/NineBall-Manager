@@ -1,9 +1,21 @@
 /* 
     Note: Fonts and icons are loaded in the main index.html via link rel statements.
+
+    Current Color Scheme
+    Base Text: #2C3E50
+    Accent Text : #698F3F
+    Background : #FBFAF8
+    Accent : #E7DECD
+    Warning / Editing : DD6E42
  */
 
 h1, h2 {
   font-weight: normal;
+}
+
+h5 {
+    margin-top: -12pt;
+    margin-bottom: 2pt;
 }
 
 ul {
@@ -21,7 +33,7 @@ a {
 }
 
 .t-body {
-  width: 100%;
+  width: 80%;
   display: table;
   vertical-align: middle;
 }
@@ -97,7 +109,7 @@ input {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
-  color: #804E49;
+  color: #DD6E42;
 }
 .material-icons {
   font-family: 'Material Icons';
