@@ -18,8 +18,8 @@ export default {
 <style>
 #app {
   font-family: 'Cabin', Helvetica, Arial, sans-serif;
-  font-size: 18pt;
-  line-height: 22pt;
+  font-size: 14pt;
+  line-height: 18pt;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
@@ -29,14 +29,14 @@ export default {
 
 #app h1 {
   font-family: 'Lobster', Georgia, Times, serif;
-  font-size: 32pt;
-  line-height: 40pt;
+  font-size: 24pt;
+  line-height: 28pt;
 }
 
 #navbar {
   font-family: 'Cabin', Helvetica, Arial, sans-serif;
-  font-size: 16pt;
-  line-height: 22pt;
+  font-size: 12pt;
+  line-height: 16pt;
   width: 100%;
   padding: 2px;
   border-top: 2px #698F3F solid;
@@ -45,7 +45,7 @@ export default {
 
 .btn {
   font-family: 'Cabin', Helvetica, Arial, sans-serif;
-  font-size: 16pt;
+  font-size: 12pt;
   background: none;
 	background-image: none;
 	border: 2px #698F3F solid;

@@ -33,7 +33,7 @@ a {
 }
 
 .t-body {
-  width: 80%;
+  width: 90%;
   display: table;
   vertical-align: middle;
 }
@@ -104,8 +104,8 @@ input {
   width: 99%;
   border: none;
   font-family: 'Cabin', Helvetica, Arial, sans-serif;
-  font-size: 18pt;
-  line-height: 20pt;
+  font-size: 14pt;
+  line-height: 18pt;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
